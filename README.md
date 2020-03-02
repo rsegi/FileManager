@@ -6,6 +6,10 @@ This project is part of the Vueling Training course. It consists in a CRUD for s
 
 In this implementation I tried to apply the Abstract Factory method and 2 layer architecture. Firstly identifying what methods the abstract factory needs to implement in order to create the concrete factories needed.
 
+### UML diagram
+
+![alt text](FileManager.png)
+
 ### 1. Planning
 
 There were main points:
