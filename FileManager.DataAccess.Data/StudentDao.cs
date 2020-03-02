@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FileManager.Common.Layer;
+using System;
 
 namespace FileManager.DataAccess.Data
 {
-    public class StudentDao
+    public interface IStudentDao
     {
+        Boolean AddStudent(Student student);
+        Student UpdateStudent(Student student);
+        Student RemoveStudent(Student student);
+        string ListStudents();
+
     }
 }
