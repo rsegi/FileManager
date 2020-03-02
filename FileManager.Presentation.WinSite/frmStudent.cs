@@ -16,23 +16,11 @@ namespace FileManager.Presentation.WinSite
         {
             
             Student student = new Student(int.Parse(txtBoxStudentId.Text), txtBoxName.Text, txtBoxSurname.Text, DateTime.Parse(txtBoxBirthDate.Text));
-            switch (ComboBox.SelectedItem)
-            {
-                case "txt":
-                    TxtStudentDao txtFileFactory = new TxtStudentDao();
-                    txtFileFactory.AddStudent(student);
-                    break;
-                case "json":
-                    JsonStudentDao jsonFileFactory = new JsonStudentDao();
-                    jsonFileFactory.AddStudent(student);
-                    break;
-                case "xml":
-                    XmlStudentDao xmlFileFactory = new XmlStudentDao();
-                    xmlFileFactory.AddStudent(student);
-                    break;
-                default:
-                    break;
-            }
+            string choice = "VuelingFile";
+            
+            var factory = FactoryProvider.getFactory(choice);
+            var miFactoria = factory.Create((ComboBox.SelectedItem.ToString()));
+            miFactoria.Add(student);
 
 
         }
@@ -43,16 +31,16 @@ namespace FileManager.Presentation.WinSite
             switch (ComboBox.SelectedItem)
             {
                 case "txt":
-                    TxtStudentDao txtFileFactory = new TxtStudentDao();
-                    txtFileFactory.RemoveStudent(student);
+                    TxtFile txtFileFactory = new TxtFile();
+                    txtFileFactory.Remove(student);
                     break;
                 case "json":
-                    JsonStudentDao jsonFileFactory = new JsonStudentDao();
-                    jsonFileFactory.RemoveStudent(student);
+                    JsonFile jsonFileFactory = new JsonFile();
+                    jsonFileFactory.Remove(student);
                     break;
                 case "xml":
-                    XmlStudentDao xmlFileFactory = new XmlStudentDao();
-                    xmlFileFactory.RemoveStudent(student);
+                    XmlFile xmlFileFactory = new XmlFile();
+                    xmlFileFactory.Remove(student);
                     break;
                 default:
                     break;
@@ -65,16 +53,16 @@ namespace FileManager.Presentation.WinSite
             switch (ComboBox.SelectedItem)
             {
                 case "txt":
-                    TxtStudentDao txtFileFactory = new TxtStudentDao();
-                    txtFileFactory.UpdateStudent(student);
+                    TxtFile txtFileFactory = new TxtFile();
+                    txtFileFactory.Update(student);
                     break;
                 case "json":
-                    JsonStudentDao jsonFileFactory = new JsonStudentDao();
-                    jsonFileFactory.UpdateStudent(student);
+                    JsonFile jsonFileFactory = new JsonFile();
+                    jsonFileFactory.Update(student);
                     break;
                 case "xml":
-                    XmlStudentDao xmlFileFactory = new XmlStudentDao();
-                    xmlFileFactory.UpdateStudent(student);
+                    XmlFile xmlFileFactory = new XmlFile();
+                    xmlFileFactory.Update(student);
                     break;
                 default:
                     break;
@@ -86,16 +74,16 @@ namespace FileManager.Presentation.WinSite
             switch (ComboBox.SelectedItem)
             {
                 case "txt":
-                    TxtStudentDao txtFileFactory = new TxtStudentDao();
-                    MessageBox.Show(txtFileFactory.ListStudents());
+                    TxtFile txtFileFactory = new TxtFile();
+                    MessageBox.Show(txtFileFactory.List());
                     break;
                 case "json":
-                    JsonStudentDao jsonFileFactory = new JsonStudentDao();
-                    MessageBox.Show(jsonFileFactory.ListStudents());
+                    JsonFile jsonFileFactory = new JsonFile();
+                    MessageBox.Show(jsonFileFactory.List());
                     break;
                 case "xml":
-                    XmlStudentDao xmlFileFactory = new XmlStudentDao();
-                    MessageBox.Show(xmlFileFactory.ListStudents());
+                    XmlFile xmlFileFactory = new XmlFile();
+                    MessageBox.Show(xmlFileFactory.List());
                     break;
                 default:
                     break;

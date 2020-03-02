@@ -8,11 +8,11 @@ using System.Text;
 
 namespace FileManager.DataAccess.Data
 {
-    public class JsonStudentDao : IStudentDao
+    public class JsonFile : VuelingFile
     {
         readonly string path = ConfigurationManager.AppSettings["jsonPath"];
 
-        public Boolean AddStudent(Student student)
+        public override Student Add(Student student)
         {
             var jsonString = "";
             var studentsList = new List<Student>();
@@ -35,21 +35,20 @@ namespace FileManager.DataAccess.Data
                 jsonString = JsonConvert.SerializeObject(studentsList);
                 File.WriteAllText(path, jsonString);
             }          
-            return true;
+            return student;
         }
 
-        public string ListStudents()
+        public override string List()
         {
             if (File.Exists(path))
             {
                 var jsonString = "";
-                var studentsList = new List<Student>();
                 var writer = new StringBuilder();
                 using (var reader = new StreamReader(path))
                 {
                     jsonString = reader.ReadToEnd();
                 }
-                studentsList = JsonConvert.DeserializeObject<List<Student>>(jsonString);
+                var studentsList = JsonConvert.DeserializeObject<List<Student>>(jsonString);
 
                 foreach (var student in studentsList)
                 {
@@ -61,7 +60,7 @@ namespace FileManager.DataAccess.Data
             return null;
         }
 
-        public Student RemoveStudent(Student student)
+        public override Student Remove(Student student)
         {
             if (File.Exists(path))
             {
@@ -82,7 +81,7 @@ namespace FileManager.DataAccess.Data
             return null;
         }
 
-        public Student UpdateStudent(Student student)
+        public override Student Update(Student student)
         {
             if (File.Exists(path))
             {
