@@ -8,10 +8,11 @@ using System.Collections.Generic;
 namespace FileManager.DataAccess.Data
 {
     
-    public class TxtStudentDao : IStudentDao
+    public class TxtFile : VuelingFile
     {
+
         readonly string path = ConfigurationManager.AppSettings["txtPath"];
-        public Boolean AddStudent(Student student)
+        public override Student Add(Student student)
         {
             var writer = new StringBuilder();
 
@@ -19,10 +20,10 @@ namespace FileManager.DataAccess.Data
 
             File.AppendAllText(path, writer.ToString());
 
-            return true;
+            return student;
         }
 
-        public string ListStudents()
+        public override string List()
         {
             if (File.Exists(path))
             {
@@ -43,7 +44,7 @@ namespace FileManager.DataAccess.Data
             
         }
 
-        public Student RemoveStudent(Student student)
+        public override Student Remove(Student student)
         {
             if (File.Exists(path))
             {
@@ -79,7 +80,7 @@ namespace FileManager.DataAccess.Data
             return null;
         }
 
-        public Student UpdateStudent(Student student)
+        public override Student Update(Student student)
         {
             if (File.Exists(path))
             {

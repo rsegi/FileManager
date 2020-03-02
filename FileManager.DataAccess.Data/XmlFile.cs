@@ -7,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace FileManager.DataAccess.Data
 {
-    public class XmlStudentDao : IStudentDao
+    public class XmlFile : VuelingFile
     {
         readonly string path = ConfigurationManager.AppSettings["xmlPath"];
-        public Boolean AddStudent(Student student)
+        public override Student Add(Student student)
         {          
             if (!File.Exists(path))
             {
@@ -37,10 +36,10 @@ namespace FileManager.DataAccess.Data
                            new XElement("BirthDate", student.BirthDate)));
                 doc.Save(path);
             }
-            return true;
+            return student;
         }
 
-        public string ListStudents()
+        public override string List()
         {
             var studentsList = new List<Student>();
             if (File.Exists(path))
@@ -49,11 +48,13 @@ namespace FileManager.DataAccess.Data
                 IEnumerable<XElement> listOfElements = doc.Root.Elements("Student");
                 foreach(var element in listOfElements)
                 {
-                    var studentFromFile = new Student();
-                    studentFromFile.StudentId = int.Parse(element.Element("StudentId").Value);
-                    studentFromFile.Name = element.Element("Name").Value;
-                    studentFromFile.Surname = element.Element("Surname").Value;
-                    studentFromFile.BirthDate = DateTime.Parse(element.Element("BirthDate").Value);
+                    var studentFromFile = new Student
+                    {
+                        StudentId = int.Parse(element.Element("StudentId").Value),
+                        Name = element.Element("Name").Value,
+                        Surname = element.Element("Surname").Value,
+                        BirthDate = DateTime.Parse(element.Element("BirthDate").Value)
+                    };
 
                     studentsList.Add(studentFromFile);
                 }
@@ -70,7 +71,7 @@ namespace FileManager.DataAccess.Data
             return null;
         }
 
-        public Student RemoveStudent(Student student)
+        public override Student Remove(Student student)
         {
             if (File.Exists(path))
             {
@@ -88,7 +89,7 @@ namespace FileManager.DataAccess.Data
             return null;
         }
 
-        public Student UpdateStudent(Student student)
+        public override Student Update(Student student)
         {
             if (File.Exists(path))
             {
