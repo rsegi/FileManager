@@ -77,32 +77,29 @@ namespace FileManager.DataAccess.Data
         public Student UpdateStudent(Student student)
         {
             XDocument doc = XDocument.Load(path);
-            IEnumerable<XElement> listOfElements = doc.Root.Elements("Student").Where(x => x.Element("StudentID").Value == student.StudentId.ToString());
-            if (listOfElements.Any())
-            {
-                listOfElements.Elements("Name").FirstOrDefault().Value = student.Name;
-                listOfElements.Elements("Surname").FirstOrDefault().Value = student.Surname;
-                listOfElements.Elements("BirthDate").FirstOrDefault().Value = student.BirthDate.ToString();
+            XElement element = doc.Root.Elements("Student").SingleOrDefault(x => x.Element("StudentId").Value.Equals(student.StudentId.ToString()));
 
-                doc.Save(path);
-                return student;
-            }
-            return null;
+            element.Elements("Name").FirstOrDefault().Value = student.Name;
+            element.Elements("Surname").FirstOrDefault().Value = student.Surname;
+            element.Elements("BirthDate").FirstOrDefault().Value = student.BirthDate.ToString();
+
+            doc.Save(path);
+            return student;
         }
 
-    private string ListToString(List<Student> studentsList)
-    {
-        var writer = new StringBuilder();
-
-        foreach (var studentInList in studentsList)
+        private string ListToString(List<Student> studentsList)
         {
-            writer.Append(studentInList.StudentId.ToString() + "," + studentInList.Name.ToString() + "," + studentInList.Surname.ToString() + "," + studentInList.BirthDate.ToString() + "\n");
+            var writer = new StringBuilder();
+
+            foreach (var studentInList in studentsList)
+            {
+                writer.Append(studentInList.StudentId.ToString() + "," + studentInList.Name.ToString() + "," + studentInList.Surname.ToString() + "," + studentInList.BirthDate.ToString() + "\n");
+            }
+            string message = writer.ToString();
+            return message;
         }
-        string message = writer.ToString();
-        return message;
+
+
+
     }
-
-
-
-}
 }
