@@ -97,13 +97,12 @@ namespace FileManager.DataAccess.Data
         private List<Student> ListStudents(string path)
         {
             var util = new TxtUtils();
-            var studentsList = new List<Student>();
 
             using (var reader = new StreamReader(path))
             {
-                studentsList = util.ListStudentsFromFile(reader);
+                var studentsList = util.ListStudentsFromFile(reader);
+                return studentsList;
             }
-            return studentsList;
         }
 
         private List<Student> ListStudentsFromFile(StreamReader reader)
