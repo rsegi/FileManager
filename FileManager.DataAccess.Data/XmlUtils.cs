@@ -5,7 +5,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace FileManager.DataAccess.Data
@@ -13,7 +13,7 @@ namespace FileManager.DataAccess.Data
     public class XmlUtils
     {
         readonly string path = ConfigurationManager.AppSettings["xmlPath"];
-        private bool FileExists()
+        public bool FileExists()
         {
             if (File.Exists(path))
             {
@@ -49,6 +49,7 @@ namespace FileManager.DataAccess.Data
         public string List()
         {
             XDocument doc = XDocument.Load(path);
+            var studentsList = new List<Student>();
             IEnumerable<XElement> listOfElements = doc.Root.Elements("Student");
             foreach (var element in listOfElements)
             {

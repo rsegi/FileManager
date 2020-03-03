@@ -1,19 +1,12 @@
 ﻿using FileManager.Common.Layer;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace FileManager.DataAccess.Data
 {
     public class XmlFile : VuelingFile
     {
         readonly string path = ConfigurationManager.AppSettings["xmlPath"];
-        var utils = XmlUtils();
+        readonly XmlUtils utils = new XmlUtils();
         public override Student Add(Student student)
         {
             utils.FileExists();
@@ -35,7 +28,7 @@ namespace FileManager.DataAccess.Data
 
         public override Student Update(Student student)
         {
-            var updatedStudent = utils.UpdateStudent();
+            var updatedStudent = utils.UpdateStudent(student);
             return updatedStudent;
         }
     }
