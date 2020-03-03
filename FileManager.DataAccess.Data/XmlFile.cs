@@ -1,11 +1,9 @@
 ﻿using FileManager.Common.Layer;
-using System.Configuration;
 
 namespace FileManager.DataAccess.Data
 {
     public class XmlFile : VuelingFile
     {
-        readonly string path = ConfigurationManager.AppSettings["xmlPath"];
         readonly XmlUtils utils = new XmlUtils();
         public override Student Add(Student student)
         {
