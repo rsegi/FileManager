@@ -2,6 +2,6 @@
 {
     public interface IDataFactory
     {
-        VuelingFile Create(string fileType);
+        VuelingFile Create(string type);
     }
 }

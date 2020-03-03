@@ -14,15 +14,12 @@ namespace FileManager.Presentation.WinSite
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             Student student = new Student(int.Parse(txtBoxStudentId.Text), txtBoxName.Text, txtBoxSurname.Text, DateTime.Parse(txtBoxBirthDate.Text));
             string choice = "VuelingFile";
 
             var factory = FactoryProvider.getFactory(choice);
             var fileFactory = factory.Create((ComboBox.SelectedItem.ToString()));
             fileFactory.Add(student);
-
-
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
