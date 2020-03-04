@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation Tier", "Presen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.Presentation.WinSite", "FileManager.Presentation.WinSite\FileManager.Presentation.WinSite.csproj", "{C51E314E-FAE3-4815-8D1E-AD26CD7223B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.DataAccess.DataTests", "FileManager.DataAccess.DataTests\FileManager.DataAccess.DataTests.csproj", "{64478225-E4EA-4037-9274-C2BD4A677CF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAcces Tests", "DataAcces Tests", "{3991DB06-662A-47AD-96FD-2CE22CE6D235}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,10 @@ Global
 		{C51E314E-FAE3-4815-8D1E-AD26CD7223B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C51E314E-FAE3-4815-8D1E-AD26CD7223B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C51E314E-FAE3-4815-8D1E-AD26CD7223B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64478225-E4EA-4037-9274-C2BD4A677CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64478225-E4EA-4037-9274-C2BD4A677CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64478225-E4EA-4037-9274-C2BD4A677CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64478225-E4EA-4037-9274-C2BD4A677CF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +49,7 @@ Global
 		{FD949E15-6CD2-4B32-9219-55CECF6E89D0} = {F5924336-0591-4FF2-994D-121C9A62AB40}
 		{FBBF0F86-8D1D-4593-8CA8-7763D26567D0} = {E0568081-C3E4-4505-8BB6-5FEDBC9D1F65}
 		{C51E314E-FAE3-4815-8D1E-AD26CD7223B8} = {072748EE-9EA1-48D6-B82C-47F747ACDD66}
+		{64478225-E4EA-4037-9274-C2BD4A677CF0} = {3991DB06-662A-47AD-96FD-2CE22CE6D235}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {674F7E5A-2C3E-4C21-A1A3-B2E43B47AF55}
