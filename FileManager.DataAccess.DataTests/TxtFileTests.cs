@@ -58,7 +58,7 @@ namespace FileManager.DataAccess.Data.Tests
             var studentToAdd = new Student(6, "Added", "Student", DateTime.Parse("05-07-1976"));
             txt.Add(studentToAdd);
             var studentsList = util.ListStudents(path);
-            Assert.IsTrue(studentsList.Last() == studentToAdd);
+            Assert.IsTrue(studentsList.Last().StudentId == studentToAdd.StudentId);
         }
 
         [TestMethod()]
@@ -78,7 +78,7 @@ namespace FileManager.DataAccess.Data.Tests
             var studentToRemove = new Student(5, "jjjj", "hhhehra", DateTime.Parse("01-10-2010"));
             txt.Remove(studentToRemove);
             var studentsList = util.ListStudents(path);
-            Assert.IsTrue(studentsList.Last() != studentToRemove);
+            Assert.IsTrue(studentsList.Last().Name != studentToRemove.Name);
         }
 
         [TestMethod()]
@@ -91,7 +91,7 @@ namespace FileManager.DataAccess.Data.Tests
             txt.Update(studentToUpdate);
             var studentsList = util.ListStudents(path);
             var updatedStudent = studentsList.Find(x => x.StudentId == 2);
-            Assert.IsTrue(studentToUpdate == updatedStudent);
+            Assert.IsTrue(studentToUpdate.StudentId == updatedStudent.StudentId);
         }
     }
 }

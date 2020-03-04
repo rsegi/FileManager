@@ -56,7 +56,8 @@ namespace FileManager.DataAccess.Data.Tests
             Student testStudent = new Student(6, "AddStudent", "Test", DateTime.Parse("15-05-1995"));
             json.Add(testStudent);
             var studentsList = util.GetListStudents();
-            Assert.IsTrue(testStudent == studentsList.Last());
+            Console.WriteLine(studentsList.Last());
+            Assert.IsTrue(testStudent.StudentId == studentsList.Last().StudentId);
         }
 
         [TestMethod()]
@@ -67,6 +68,7 @@ namespace FileManager.DataAccess.Data.Tests
             Student testStudent = new Student(5, "jjjj", "hhhehra", DateTime.Parse("01-10-2010"));
             var studentsList = util.GetListStudents();
             json.Remove(testStudent);
+            Console.WriteLine(studentsList.Last());
             Assert.IsTrue(testStudent != studentsList.Last());
         }
 
@@ -79,7 +81,9 @@ namespace FileManager.DataAccess.Data.Tests
             json.Update(studentToUpdate);
             var studentsList = util.GetListStudents();
             var updatedStudent = studentsList.Find(x => x.StudentId == 2);
-            Assert.IsTrue(studentToUpdate == updatedStudent);
+            Console.WriteLine(studentToUpdate);
+            Console.WriteLine(updatedStudent);
+            Assert.IsTrue(studentToUpdate.StudentId == updatedStudent.StudentId);
         }
 
         [TestMethod()]
