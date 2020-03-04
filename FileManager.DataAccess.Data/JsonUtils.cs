@@ -83,7 +83,7 @@ namespace FileManager.DataAccess.Data
             return student;
         }
 
-        private List<Student> GetListStudents()
+        public List<Student> GetListStudents()
         {
             var jsonString = "";
             using (var reader = new StreamReader(path))

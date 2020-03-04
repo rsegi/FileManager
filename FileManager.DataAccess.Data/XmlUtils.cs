@@ -26,7 +26,7 @@ namespace FileManager.DataAccess.Data
             }
         }
 
-        private bool CreateFile()
+        public bool CreateFile()
         {
             XDocument doc = new XDocument(new XElement("Students"));
             doc.Save(path);
@@ -48,6 +48,13 @@ namespace FileManager.DataAccess.Data
 
         public string List()
         {
+            var studentsList = GetStudents();
+            var message = ListToString(studentsList);
+            return message;
+        }
+
+        public List<Student> GetStudents()
+        {
             XDocument doc = XDocument.Load(path);
             var studentsList = new List<Student>();
             IEnumerable<XElement> listOfElements = doc.Root.Elements("Student");
@@ -56,8 +63,7 @@ namespace FileManager.DataAccess.Data
                 var studentFromFile = new Student(int.Parse(element.Element("StudentId").Value), element.Element("Name").Value, element.Element("Surname").Value, DateTime.Parse(element.Element("BirthDate").Value));
                 studentsList.Add(studentFromFile);
             }
-            var message = ListToString(studentsList);
-            return message;
+            return studentsList;
         }
 
         public Student RemoveStudent(Student student)

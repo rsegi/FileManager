@@ -7,7 +7,7 @@ using System.Text;
 
 namespace FileManager.DataAccess.Data
 {
-    class TxtUtils
+    public class TxtUtils
     {
         readonly string path = ConfigurationManager.AppSettings["txtPath"];
 
@@ -24,7 +24,7 @@ namespace FileManager.DataAccess.Data
             }
         }
 
-        private bool CreateFile()
+        public bool CreateFile()
         {
             using (File.Create(path))
             {
@@ -94,7 +94,7 @@ namespace FileManager.DataAccess.Data
             return message;
         }
 
-        private List<Student> ListStudents(string path)
+        public List<Student> ListStudents(string path)
         {
             var util = new TxtUtils();
 
