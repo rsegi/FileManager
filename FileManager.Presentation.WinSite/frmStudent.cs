@@ -1,5 +1,5 @@
-﻿using FileManager.Common.Layer;
-using FileManager.DataAccess.Data;
+﻿using FileManager.Business.Layer;
+using FileManager.Common.Layer;
 using System;
 using System.Windows.Forms;
 
@@ -14,39 +14,29 @@ namespace FileManager.Presentation.WinSite
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Student student = new Student(int.Parse(txtBoxStudentId.Text), txtBoxName.Text, txtBoxSurname.Text, DateTime.Parse(txtBoxBirthDate.Text));
-            string choice = "VuelingFile";
+            FileManagerBll fileBll = new FileManagerBll();
 
-            var factory = FactoryProvider.getFactory(choice);
-            var fileFactory = factory.Create((ComboBox.SelectedItem.ToString()));
-            fileFactory.Add(student);
+            fileBll.Add(txtBoxStudentId.Text, txtBoxName.Text, txtBoxSurname.Text, txtBoxBirthDate.Text, ComboBox.SelectedItem.ToString());
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            Student student = new Student(int.Parse(txtBoxStudentId.Text), txtBoxName.Text, txtBoxSurname.Text, DateTime.Parse(txtBoxBirthDate.Text));
-            string choice = "VuelingFile";
-            var factory = FactoryProvider.getFactory(choice);
-            var fileFactory = factory.Create((ComboBox.SelectedItem.ToString()));
-            fileFactory.Remove(student);
+            FileManagerBll fileBll = new FileManagerBll();
+            fileBll.Remove(txtBoxStudentId.Text, txtBoxName.Text, txtBoxSurname.Text, txtBoxBirthDate.Text, ComboBox.SelectedItem.ToString());
         }
 
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            Student student = new Student(int.Parse(txtBoxStudentId.Text), txtBoxName.Text, txtBoxSurname.Text, DateTime.Parse(txtBoxBirthDate.Text));
-            string choice = "VuelingFile";
-            var factory = FactoryProvider.getFactory(choice);
-            var fileFactory = factory.Create((ComboBox.SelectedItem.ToString()));
-            fileFactory.Update(student);
+            FileManagerBll fileBll = new FileManagerBll();
+            fileBll.Update(txtBoxStudentId.Text, txtBoxName.Text, txtBoxSurname.Text, txtBoxBirthDate.Text, ComboBox.SelectedItem.ToString());
         }
 
         private void BtnList_Click(object sender, EventArgs e)
         {
-            string choice = "VuelingFile";
-            var factory = FactoryProvider.getFactory(choice);
-            var fileFactory = factory.Create((ComboBox.SelectedItem.ToString()));
-            MessageBox.Show(fileFactory.List());
+            FileManagerBll fileBll = new FileManagerBll();
+            var message = fileBll.GetAll(ComboBox.SelectedItem.ToString());
+            MessageBox.Show(message);
         }
     }
 }

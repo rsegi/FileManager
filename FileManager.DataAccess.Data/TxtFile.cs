@@ -1,4 +1,5 @@
 ﻿using FileManager.Common.Layer;
+using System.Collections.Generic;
 
 namespace FileManager.DataAccess.Data
 {
@@ -32,6 +33,12 @@ namespace FileManager.DataAccess.Data
             utils.FileExists();
             var updatedStudent = utils.UpdateStudent(student);
             return updatedStudent;
+        }
+
+        public override List<Student> GetAll()
+        {
+            var studentsList = utils.ListStudents();
+            return studentsList;
         }
     }
 }

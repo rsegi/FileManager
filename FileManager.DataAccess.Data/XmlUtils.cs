@@ -41,7 +41,8 @@ namespace FileManager.DataAccess.Data
                            new XElement("StudentId", student.StudentId),
                            new XElement("Name", student.Name),
                            new XElement("Surname", student.Surname),
-                           new XElement("BirthDate", student.BirthDate)));
+                           new XElement("BirthDate", student.BirthDate),
+                           new XElement("GUID", student.Guid)));
             doc.Save(path);
             return student;
         }

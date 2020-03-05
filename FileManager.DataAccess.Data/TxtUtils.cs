@@ -36,7 +36,7 @@ namespace FileManager.DataAccess.Data
         {
             var writer = new StringBuilder();
 
-            writer.AppendLine($"{student.StudentId},{student.Name},{student.Surname},{student.BirthDate}");
+            writer.AppendLine($"{student.StudentId},{student.Name},{student.Surname},{student.BirthDate}, {student.Guid}");
 
             File.AppendAllText(path, writer.ToString());
 
@@ -47,7 +47,7 @@ namespace FileManager.DataAccess.Data
         {
             var util = new TxtUtils();
             var writer = new StringBuilder();
-            var studentsList = util.ListStudents(path);
+            var studentsList = util.ListStudents();
 
             Student studentToErase = studentsList.Find(x => x.StudentId == student.StudentId);
             studentsList.Remove(studentToErase);
@@ -65,7 +65,7 @@ namespace FileManager.DataAccess.Data
         {
             var util = new TxtUtils();
             var writer = new StringBuilder();
-            var studentsList = util.ListStudents(path);
+            var studentsList = util.ListStudents();
 
             Student studentToErase = studentsList.Find(x => x.StudentId == student.StudentId);
             studentsList.Remove(studentToErase);
@@ -94,7 +94,7 @@ namespace FileManager.DataAccess.Data
             return message;
         }
 
-        public List<Student> ListStudents(string path)
+        public List<Student> ListStudents()
         {
             var util = new TxtUtils();
 

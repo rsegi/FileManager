@@ -1,4 +1,5 @@
 ﻿using FileManager.Common.Layer;
+using System.Collections.Generic;
 
 namespace FileManager.DataAccess.Data
 {
@@ -10,5 +11,6 @@ namespace FileManager.DataAccess.Data
         public abstract Student Update(Student student);
         public abstract Student Remove(Student student);
         public abstract string List();
+        public abstract List<Student> GetAll();
     }
 }
