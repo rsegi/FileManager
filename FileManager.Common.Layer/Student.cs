@@ -8,6 +8,7 @@ namespace FileManager.Common.Layer
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime BirthDate { get; set; }
+        public Guid Guid { get; set; }
 
         public Student()
         {
@@ -20,5 +21,6 @@ namespace FileManager.Common.Layer
             this.Surname = surname;
             this.BirthDate = birthDate;
         }
+
     }
 }
