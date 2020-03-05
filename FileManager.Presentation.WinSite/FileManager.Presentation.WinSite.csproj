@@ -98,13 +98,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FileManager.Business.Layer\FileManager.Business.Layer.csproj">
+      <Project>{09f18e9c-f4ff-42b6-92e4-e54a3d37a1f5}</Project>
+      <Name>FileManager.Business.Layer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FileManager.Common.Layer\FileManager.Common.Layer.csproj">
       <Project>{fbbf0f86-8d1d-4593-8ca8-7763d26567d0}</Project>
       <Name>FileManager.Common.Layer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FileManager.DataAccess.Data\FileManager.DataAccess.Data.csproj">
-      <Project>{fd949e15-6cd2-4b32-9219-55cecf6e89d0}</Project>
-      <Name>FileManager.DataAccess.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
